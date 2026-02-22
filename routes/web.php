@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SSOController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/sso-login', [SSOController::class, 'ssoLogin']);
+Route::get('/dashboard', [SSOController::class, 'dashboard'])->middleware('auth');
