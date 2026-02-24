@@ -49,13 +49,15 @@ class SSOController extends Controller
     }
     public function ssoLogout(Request $request)
     {
-        $email = $request->input('email');
+        if (Auth::check()) {
 
-        $user = User::where('email', $email)->first();
-        if ($user && Auth::check() && Auth::user()->id === $user->id) {
             Auth::logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
         }
 
-        return redirect('http://127.0.0.1:8000/login')->with('success', 'You have been logged out successfully.');
+        return redirect('http://127.0.0.1:8000/login')
+            ->with('success', 'You have been logged out successfully.');
     }
 }
