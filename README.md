@@ -137,4 +137,4 @@ php artisan serve --port=8000
 - Login to Ecommerce.
 - Click "Login to Foodpanda".
 - Auto-login should work
-- Logout in Ecommerce but Foodpanda session unaffected
+- Logout in Foodpanda but Ecommerce session unaffected
